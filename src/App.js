@@ -11,7 +11,6 @@ export default class App extends React.Component {
   
   componentDidMount() {
     var arg;
-    console.log(process.env.REACT_APP_API_ENDPOINT);
     if (window.location.href.split('=').length > 1) {
       arg = window.location.href.split('=')[1];
       if (!arg.startsWith("?linkname=") && arg !== "") {
@@ -27,7 +26,6 @@ export default class App extends React.Component {
           }
           else {
             var link = data.body.replace(/['"]+/g, '');
-            console.log(link);
             window.location.href = link;
           }
         }
