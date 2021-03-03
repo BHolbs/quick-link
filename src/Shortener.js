@@ -25,7 +25,8 @@ export default class Shortener extends React.Component {
                     status.style.color = 'green';
                     var shortLink = document.getElementsByName('linkbox')[0];
                     shortLink.innerHTML =  `${window.location.hostname}/?link=${link}`;
-                    shortLink.href = `${window.location.hostname}/?link=${link}`;
+                    // hard code in the AWS Amplify link, for some reason using the above line is duplicating the host name in production
+                    shortLink.href = `${process.env.REACT_APP_LINK_URL}${link}`;
                 }
             }
 
@@ -47,7 +48,7 @@ export default class Shortener extends React.Component {
                     <br></br>
                     <button onClick={() => this.shortenLink()}>Shorten Link</button>
                 <div name='status'></div>
-                <a name='linkbox' href='#'></a>
+                <a name='linkbox' href=''></a>
             </div>
         )
     }
